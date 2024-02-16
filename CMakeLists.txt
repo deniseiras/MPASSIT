@@ -43,9 +43,29 @@ if(CMAKE_C_COMPILER_ID MATCHES "^(Intel)$")
 endif()
 
 # Find packages.
-find_package(NetCDF 4.3.3 REQUIRED C Fortran)
+
+# DENIS TEST ======================================
+# Include the FindPackage.cmake script
+include(FindSpackPackages)
+message("Searching for Spack packages ...")
+find_spack_package("parallel-netcdf")
+message("parallel-netcdf package directories: ${parallel-netcdf_DIRS}")
+find_spack_package("esmf")
+message("esmf package directories: ${esmf_DIRS}")
+find_spack_package("netcdf-c")
+message("netcdf-c package directories: ${netcdf-c_DIRS}")
+find_spack_package("netcdf-fortran")
+message("netcdf-fortran package directories: ${netcdf-fortran_DIRS}")
+find_spack_package("xerces-c")
+message("xerces-c package directories: ${xerces-c_DIRS}")
+
+# return()
+# DENIS TEST ======================================
+
+#find_package(NetCDF 4.3.3 REQUIRED C Fortran)
 find_package(MPI REQUIRED C Fortran)
-find_package(ESMF 8.3.0 REQUIRED)
+#find_package(ESMF 8.3.0 REQUIRED)
+
 
 if(OPENMP)
   find_package(OpenMP REQUIRED COMPONENTS Fortran)

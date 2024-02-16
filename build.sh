@@ -46,6 +46,10 @@ rm -fr ./build
 mkdir ./build && cd ./build
 
 cmake .. ${CMAKE_FLAGS}
+
+exit
+
+
 make -j 8 VERBOSE=1
 make install
 
